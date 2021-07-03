@@ -8,7 +8,11 @@ const RefreshTokenKey = Config.RefreshTokenKey
 const ExpiresInKey = Config.ExpiresInKey
 
 export function getToken() {
-  return 'Bearer ' + Cookies.get(TokenKey)
+  var token = Cookies.get(TokenKey)
+  if (token) {
+    token = 'Bearer ' + token
+  }
+  return token
 }
 
 export function setToken(token, rememberMe) {
