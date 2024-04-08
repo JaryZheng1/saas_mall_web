@@ -2,7 +2,7 @@ module.exports = {
   /**
    * @description 网站标题
    */
-  title: 'YSHOP-CLOUD-v1.2',
+  title: 'YSHOP-CLOUD-v1.4.1',
   /**
    * @description 是否显示 tagsView
    */
@@ -27,7 +27,7 @@ module.exports = {
    * @description token key
    */
   TokenKey: 'YSHOP-TOEKN',
-
+  TenantIdKey: 'YSHOP-TENANT-ID',
   RefreshTokenKey: 'YSHOP-Refresh-Token',
 
   ExpiresInKey: 'YSHOP-Expires-In',
@@ -46,7 +46,7 @@ module.exports = {
   /**
    * 底部文字，支持html语法
    */
-  footerTxt: '© 2019-2021 YSHOP <a href="http://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache License 2.0</a>',
+  footerTxt: '© 2018-2023 YSHOP <a href="http://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache License 2.0</a>',
   /**
    * 备案号
    */

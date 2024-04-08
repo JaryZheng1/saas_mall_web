@@ -15,7 +15,7 @@ const api = {
     // 上传文件到七牛云
     qiNiuUploadApi: baseUrl + '/system/qiNiuContent',
 
-    uploadApi: baseUrl + '/system/upload',
+    uploadApi: baseUrl + '/system/upload/upload',
     // Sql 监控
     sqlApi: baseUrl + '/druid',
     // swagger

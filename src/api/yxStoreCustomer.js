@@ -26,19 +26,19 @@ export function edit(data) {
 
 export function getqrcode() {
   return request({
-    url: 'mall/wxmp/qrcode',
+    url: 'weixin/wxmp/qrcode',
     method: 'get'
   })
 }
 export function getOpenId(key) {
   return request({
-    url: 'mall/wxmp/getOpenId?key=' + key,
+    url: 'weixin/wxmp/getOpenId?key=' + key,
     method: 'get'
   })
 }
 export function getwechatCode() {
   return request({
-    url: 'mall/wxmp/wechatCode',
+    url: 'weixin/wxmp/wechatCode',
     method: 'get'
   })
 }

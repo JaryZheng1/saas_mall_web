@@ -2,7 +2,7 @@ import axios from 'axios'
 import router from '@/router/routers'
 import { Notification, MessageBox } from 'element-ui'
 import store from '../store'
-import { getToken } from '@/utils/auth'
+import { getToken, getTenantId } from '@/utils/auth'
 import Config from '@/settings'
 import errorCode from '@/utils/errorCode'
 
@@ -18,6 +18,9 @@ service.interceptors.request.use(
   config => {
     if (getToken()) {
       config.headers['Authorization'] = getToken() // 让每个请求携带自定义token 请根据实际情况自行修改
+    }
+    if (getTenantId()) {
+      config.headers['tenantId'] = getTenantId() // 让每个请求携带自定义token 请根据实际情况自行修改
     }
     config.headers['Content-Type'] = 'application/json'
     return config

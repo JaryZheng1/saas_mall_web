@@ -25,7 +25,7 @@ export default {
   },
   data() {
     return {
-      title: 'YSHOP-CLOUD-v1.2',
+      title: 'YSHOP-CLOUD-v1.4.1',
       logo: Logo
     }
   }

@@ -16,7 +16,7 @@
           type="primary"
           icon="el-icon-plus"
         >
-          <router-link :to="'/activity/combinationAdd'">
+          <router-link :to="'/managerShop/activity/combinationAdd'">
           新增
           </router-link>
         </el-button>
@@ -69,7 +69,7 @@
             type="primary"
             icon="el-icon-edit"
           >
-            <router-link :to="'/activity/combinationEdit/'+scope.row.id">
+            <router-link :to="'/managerShop/activity/combinationEdit/'+scope.row.id">
               编辑
             </router-link>
           </el-button>

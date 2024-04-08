@@ -16,7 +16,7 @@
           type="primary"
           icon="el-icon-plus"
         >
-          <router-link :to="'/activity/secKillAdd'">
+          <router-link :to="'/managerShop/activity/secKillAdd'">
             新增
           </router-link>
         </el-button>
@@ -55,7 +55,7 @@
             type="primary"
             icon="el-icon-edit"
           >
-            <router-link :to="'/activity/secKillEdit/'+scope.row.id">
+            <router-link :to="'/managerShop/activity/secKillEdit/'+scope.row.id">
               编辑
             </router-link>
           </el-button>

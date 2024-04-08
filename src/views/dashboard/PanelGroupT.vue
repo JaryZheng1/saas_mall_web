@@ -3,7 +3,7 @@
       <el-row :gutter="24" class="dashboard-console-grid">
         <el-col v-bind="grid" class="ivu-mb">
           <el-card :bordered="false">
-            <router-link :to="{ path: '/shop/cate' }">
+            <router-link :to="{ path: '/managerShop/shop/goods' }">
               <i class="el-icon-goods" style="color: #69c0ff" />
               <p>商品管理</p>
             </router-link>
@@ -11,7 +11,7 @@
         </el-col>
         <el-col v-bind="grid" class="ivu-mb">
           <el-card :bordered="false">
-            <router-link :to="{ path: '/member/member' }">
+            <router-link :to="{ path: '/managerShop/member/member' }">
               <i class="el-icon-user" style="color: #95de64" />
               <p>会员管理</p>
             </router-link>
@@ -19,7 +19,7 @@
         </el-col>
         <el-col v-bind="grid" class="ivu-mb">
           <el-card :bordered="false">
-            <router-link :to="{ path: '/order/order' }">
+            <router-link :to="{ path: '/managerShop/order/order' }">
               <i class="el-icon-s-order" style="color: #ff9c6e" />
               <p>订单管理</p>
             </router-link>
@@ -27,7 +27,7 @@
         </el-col>
         <el-col v-bind="grid" class="ivu-mb">
           <el-card :bordered="false">
-            <router-link :to="{ path: '/syscoupon/coupon' }">
+            <router-link :to="{ path: '/managerShop/syscoupon/coupon' }">
               <i class="el-icon-s-ticket" style="color: #b37feb" />
               <p>电子券管理</p>
             </router-link>
@@ -35,7 +35,7 @@
         </el-col>
         <el-col v-bind="grid" class="ivu-mb">
           <el-card :bordered="false">
-            <router-link :to="{ path: '/activity/combination' }">
+            <router-link :to="{ path: '/managerShop/activity/combination' }">
               <i class="el-icon-postcard" style="color: #ffd666" />
               <p>营销管理</p>
             </router-link>
@@ -43,7 +43,7 @@
         </el-col>
         <el-col v-bind="grid" class="ivu-mb">
           <el-card :bordered="false">
-            <router-link :to="{ path: '/promoter/promoterconfig' }">
+            <router-link :to="{ path: '/managerShop/promoter/promoterconfig' }">
               <i class="el-icon-notebook-1" style="color: #5cdbd3" />
               <p>分销管理</p>
             </router-link>
@@ -51,7 +51,7 @@
         </el-col>
         <el-col v-bind="grid" class="ivu-mb">
           <el-card :bordered="false">
-            <router-link :to="{ path: '/price/extract' }">
+            <router-link :to="{ path: '/managerShop/price/extract' }">
               <i class="el-icon-s-finance" style="color: #ff85c0" />
               <p>财务管理</p>
             </router-link>
@@ -59,7 +59,7 @@
         </el-col>
         <el-col v-bind="grid" class="ivu-mb">
           <el-card :bordered="false">
-            <router-link :to="{ path: '/store/storeinfo' }">
+            <router-link :to="{ path: '/managerShop/store/storeinfo' }">
               <i class="el-icon-office-building" style="color: #ffc069" />
               <p>门店管理</p>
             </router-link>

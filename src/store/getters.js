@@ -1,4 +1,9 @@
 const getters = {
+  // 画布
+  terminal: state => state.container.terminal,
+  activeComponent: state => state.container.activeComponent,
+  componentsData: state => state.container.componentsData,
+
   deployUploadApi: state => state.api.deployUploadApi,
   databaseUploadApi: state => state.api.databaseUploadApi,
   size: state => state.app.size,
@@ -11,6 +16,8 @@ const getters = {
   user: state => state.user.user,
   loadMenus: state => state.user.loadMenus,
   permission_routers: state => state.permission.routers,
+  levelRouters: state => state.permission.levelRouters,
+  activeRoute: state => state.permission.activeRoute,
   addRouters: state => state.permission.addRouters,
   socketApi: state => state.api.socketApi,
   imagesUploadApi: state => state.api.imagesUploadApi,

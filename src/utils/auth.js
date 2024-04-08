@@ -2,10 +2,23 @@ import Cookies from 'js-cookie'
 import Config from '@/settings'
 
 const TokenKey = Config.TokenKey
+const TenantIdKey = Config.TenantIdKey
 
 const RefreshTokenKey = Config.RefreshTokenKey
 
 const ExpiresInKey = Config.ExpiresInKey
+
+export function getTenantId() {
+  return Cookies.get(TenantIdKey)
+}
+
+export function setTenantId(tenantId) {
+  return Cookies.set(TenantIdKey, tenantId)
+}
+
+export function removeTenantId() {
+  return Cookies.remove(TenantIdKey)
+}
 
 export function getToken() {
   var token = Cookies.get(TokenKey)

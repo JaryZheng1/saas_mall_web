@@ -11,7 +11,7 @@
           type="primary"
           icon="el-icon-plus"
                  >
-          <router-link :to="'/wechat/artadd'">
+          <router-link :to="'/managerShop/wechat/artadd'">
             新增
           </router-link>
         </el-button>
@@ -39,7 +39,7 @@
           <el-button v-permission="['admin','YXARTICLE_ALL','YXARTICLE_EDIT']" size="mini"
                      type="primary" icon="el-icon-edit"
                      >
-            <router-link :to="'/wechat/artadd/'+scope.row.id">
+            <router-link :to="'/managerShop/wechat/artadd/'+scope.row.id">
               编辑
             </router-link>
           </el-button>

@@ -4,6 +4,19 @@
 
     <breadcrumb id="breadcrumb-container" class="breadcrumb-container" />
 
+    <div class="navbar-menu">
+      <el-menu
+        :default-active="activeRoute"
+        :active-text-color="variables.menuActiveText"
+        :collapse-transition="false"
+        mode="horizontal"
+      >
+        <el-menu-item v-for="route in levelRouters" :key="route.path" :index="route.path" @click="changeActiveRoute(route)">
+          <item v-if="route.meta" :icon="route.meta && route.meta.icon" :title="route.meta.title" />
+        </el-menu-item>
+      </el-menu>
+    </div>
+
     <div class="right-menu">
       <template v-if="device!=='mobile'">
         <search id="header-search" class="right-menu-item" />
@@ -58,6 +71,9 @@ import Screenfull from '@/components/Screenfull'
 import SizeSelect from '@/components/SizeSelect'
 import Search from '@/components/HeaderSearch'
 import Avatar from '@/assets/images/avatar.png'
+import variables from '@/assets/styles/variables.scss'
+
+import Item from './Sidebar/Item.vue'
 
 export default {
   components: {
@@ -66,7 +82,8 @@ export default {
     Screenfull,
     SizeSelect,
     Search,
-    Github
+    Github,
+    Item
   },
   data() {
     return {
@@ -76,6 +93,8 @@ export default {
   },
   computed: {
     ...mapGetters([
+      'levelRouters',
+      'activeRoute',
       'sidebar',
       'device',
       'user',
@@ -91,9 +110,43 @@ export default {
           value: val
         })
       }
+    },
+    // activeMenu() {
+    //   const route = this.$route
+    //   const { meta, path } = route
+    //   // if set path, the sidebar will highlight the path you set
+    //   if (meta.activeMenu) {
+    //     return meta.activeMenu
+    //   }
+    //   return path
+    // },
+    showLogo() {
+      return this.$store.state.settings.sidebarLogo
+    },
+    variables() {
+      return variables
+    },
+    isCollapse() {
+      return !this.sidebar.opened
     }
   },
+  watch: {
+    '$route': {
+      handler(val, oldVal) {
+        this.$store.dispatch('setActiveRoute', val.matched[0].path)
+      },
+      deep: true
+    }
+  },
+  created() {
+    this.$store.dispatch('setActiveRoute', this.$route.matched[0].path)
+    console.log(this)
+  },
   methods: {
+    changeActiveRoute(item) {
+      console.log(item)
+      this.$store.dispatch('setActiveRoute', item.path)
+    },
     toggleSideBar() {
       this.$store.dispatch('app/toggleSideBar')
     },
@@ -122,7 +175,24 @@ export default {
   position: relative;
   background: #fff;
   box-shadow: 0 1px 4px rgba(0,21,41,.08);
-
+  .navbar-menu{
+    display: inline-block;
+    position: absolute;
+    left:106px;
+    top:0;
+    right:200px;
+    overflow: hidden;
+    .svg-icon {
+      margin-right: 8px;
+    }
+    .el-menu--horizontal>.el-menu-item{
+      height: 50px;
+      line-height: 50px;
+    }
+    .el-menu-item{
+      padding: 0 10px;
+    }
+  }
   .hamburger-container {
     line-height: 46px;
     height: 100%;

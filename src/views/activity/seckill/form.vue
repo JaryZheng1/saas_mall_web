@@ -650,7 +650,7 @@ export default {
               type: 'success'
             });
             setTimeout(() => {
-              this.$router.push({ path: '/activity/seckill' });
+              this.$router.push({ path: '/managerShop/activity/seckill' });
             }, 500);
           }).catch(res => {
             this.$message.error(res.msg);

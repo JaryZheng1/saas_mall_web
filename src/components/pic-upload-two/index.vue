@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import { getToken } from '@/utils/auth'
+import { getToken, getTenantId } from '@/utils/auth'
 import { mapGetters } from 'vuex'
 export default {
   props: {
@@ -28,7 +28,8 @@ export default {
     return {
       resourcesUrl: '',
       headers: {
-        'Authorization': getToken()
+        'Authorization': getToken(),
+        'tenantId': getTenantId()
       }
     }
   },

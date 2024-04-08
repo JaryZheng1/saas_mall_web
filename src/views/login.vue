@@ -6,9 +6,11 @@
           YSHOP单商户B2C电商系统
         </h3>
         <ul style="margin: 0;color: #ffffff;font-size: 15px;line-height: 25px;padding-left: 20px">
+          <li>SaaS多租户</li>
           <li>SpringCloudAlibaba</li>
           <li>SpringCloud</li>
           <li>seata</li>
+          <li>nacos</li>
           <li>xxl-job</li>
           <li>oss</li>
           <li>SpringCloudStream</li>
@@ -25,7 +27,7 @@
       </div>
       <el-form ref="loginForm" :model="loginForm" :rules="loginRules" label-position="left" label-width="0px" class="login-form">
         <h3 class="title">
-          YSHOP-CLOUD后台管理系统-v1.2
+          YSHOP-CLOUD后台管理系统-v1.4.1
         </h3>
         <el-form-item prop="username">
           <el-input v-model="loginForm.username" type="text" auto-complete="off" placeholder="账号">
@@ -60,7 +62,7 @@
     <div v-if="$store.state.settings.showFooter" id="el-login-footer">
       <span v-html="$store.state.settings.footerTxt" />
       <span> ⋅ </span>
-      <a href="http://www.beian.miit.gov.cn" target="_blank">{{ $store.state.settings.caseNumber }}</a>
+      <a href="http://beian.miit.gov.cn" target="_blank">{{ $store.state.settings.caseNumber }}</a>
     </div>
   </div>
 </template>

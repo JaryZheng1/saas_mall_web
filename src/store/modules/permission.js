@@ -4,17 +4,31 @@ import Layout from '@/layout/index'
 const permission = {
   state: {
     routers: constantRouterMap,
+    levelRouters: [],
+    activeRoute: '',
     addRouters: []
   },
   mutations: {
     SET_ROUTERS: (state, routers) => {
       state.addRouters = routers
+      routers.push({ path: '*', redirect: '/404', hidden: true })
       state.routers = constantRouterMap.concat(routers)
+      state.levelRouters = routers
+    },
+    SET_ACTIVEROUTE: (state, data) => {
+      state.activeRoute = data
+    },
+    SET_LEVELROUTERS: (state, data) => {
+      state.levelRouters = data
     }
   },
   actions: {
     GenerateRoutes({ commit }, asyncRouter) {
       commit('SET_ROUTERS', asyncRouter)
+    },
+    setActiveRoute({ commit }, route) {
+      console.log(route)
+      commit('SET_ACTIVEROUTE', route)
     }
   }
 }

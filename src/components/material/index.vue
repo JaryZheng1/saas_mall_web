@@ -148,7 +148,7 @@
 <script>
 import { getPage as materialgroupPage, addObj as materialgroupAdd, delObj as materialgroupDel, putObj as materialgroupEdit } from '@/api/tools/materialgroup'
 import { getPage, addObj, delObj, putObj } from '@/api/tools/material'
-import { getToken } from '@/utils/auth'
+import { getToken, getTenantId } from '@/utils/auth'
 import { mapGetters } from 'vuex'
 
 export default {
@@ -190,7 +190,8 @@ export default {
   data() {
     return {
       headers: {
-        Authorization: getToken()
+        Authorization: getToken(),
+        tenantId: getTenantId()
       },
       dialogVisible: false,
       url: '',

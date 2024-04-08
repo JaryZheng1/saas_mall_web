@@ -19,10 +19,10 @@ export function parseTime(time, cFormat) {
   } else if (typeof time === 'object') {
     date = time
   } else {
-    if ((typeof time === 'string') && (/^[0-9]+$/.test(time))) {
+    if (typeof time === 'string' && /^[0-9]+$/.test(time)) {
       time = parseInt(time)
     }
-    if ((typeof time === 'number') && (time.toString().length === 10)) {
+    if (typeof time === 'number' && time.toString().length === 10) {
       time = time * 1000
     }
     date = new Date(time)
@@ -39,7 +39,9 @@ export function parseTime(time, cFormat) {
   const time_str = format.replace(/{(y|m|d|h|i|s|a)+}/g, (result, key) => {
     let value = formatObj[key]
     // Note: getDay() returns 0 on Sunday
-    if (key === 'a') { return ['日', '一', '二', '三', '四', '五', '六'][value ] }
+    if (key === 'a') {
+      return ['日', '一', '二', '三', '四', '五', '六'][value]
+    }
     if (result.length > 0 && value < 10) {
       value = '0' + value
     }
@@ -98,7 +100,8 @@ export function formatTimeTwo(time) {
   // time = time * 1000
   const d = new Date(time)
   return (
-    d.getFullYear() + '年' +
+    d.getFullYear() +
+    '年' +
     (d.getMonth() + 1) +
     '月' +
     d.getDate() +
@@ -113,7 +116,8 @@ export function formatTimeThree(time) {
   time = time * 1000
   const d = new Date(time)
   return (
-    d.getFullYear() + '年' +
+    d.getFullYear() +
+    '年' +
     (d.getMonth() + 1) +
     '月' +
     d.getDate() +
@@ -154,7 +158,7 @@ export function byteLength(str) {
     const code = str.charCodeAt(i)
     if (code > 0x7f && code <= 0x7ff) s++
     else if (code > 0x7ff && code <= 0xffff) s += 2
-    if (code >= 0xDC00 && code <= 0xDFFF) i--
+    if (code >= 0xdc00 && code <= 0xdfff) i--
   }
   return s
 }
@@ -421,14 +425,91 @@ export function downloadFile(obj, name, suffix) {
 }
 
 export function RandomNumber() {
-  var min = 5; var max = 36
+  var min = 5
+  var max = 36
   var randomStr = ''
-  var range = (max ? Math.round(Math.random() * (max - min)) + min : min)
-  var arr = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
+  var range = max ? Math.round(Math.random() * (max - min)) + min : min
+  var arr = [
+    '0',
+    '1',
+    '2',
+    '3',
+    '4',
+    '5',
+    '6',
+    '7',
+    '8',
+    '9',
+    'a',
+    'b',
+    'c',
+    'd',
+    'e',
+    'f',
+    'g',
+    'h',
+    'i',
+    'j',
+    'k',
+    'l',
+    'm',
+    'n',
+    'o',
+    'p',
+    'q',
+    'r',
+    's',
+    't',
+    'u',
+    'v',
+    'w',
+    'x',
+    'y',
+    'z',
+    'A',
+    'B',
+    'C',
+    'D',
+    'E',
+    'F',
+    'G',
+    'H',
+    'I',
+    'J',
+    'K',
+    'L',
+    'M',
+    'N',
+    'O',
+    'P',
+    'Q',
+    'R',
+    'S',
+    'T',
+    'U',
+    'V',
+    'W',
+    'X',
+    'Y',
+    'Z'
+  ]
 
   for (var i = 0; i < range; i++) {
     var index = Math.round(Math.random() * (arr.length - 1))
     randomStr += arr[index]
   }
   return randomStr
+}
+
+export function converPath(data, path) {
+  data.map((item, index) => {
+    if (path) {
+      item.url = path + '/' + item.path
+    } else {
+      item.url = item.path
+    }
+    if (item.children) {
+      converPath(item.children, item.url)
+    }
+  })
 }

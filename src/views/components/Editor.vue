@@ -7,7 +7,7 @@
 <script>
 import { mapGetters } from 'vuex'
 import E from 'wangeditor'
-import { getToken } from '@/utils/auth'
+import { getToken, getTenantId } from '@/utils/auth'
 export default {
   name: 'Editor',
   model: {
@@ -23,7 +23,8 @@ export default {
   data() {
     return {
       headers: {
-        'Authorization': getToken()
+        'Authorization': getToken(),
+        'tenantId': getTenantId()
       },
       info: null,
       editor: null
@@ -41,9 +42,8 @@ export default {
     }
   },
   mounted() {
-    // console.log(222)
-    console.log(this.value)
     this.editor = new E(this.$refs.editor)
+    this.editor.customConfig = this.editor.customConfig ? this.editor.customConfig : this.editor.config
     this.editor.customConfig.uploadImgShowBase64 = true // 使用 base64 保存图片
     // 不可修改
     this.editor.customConfig.uploadImgHeaders = this.headers

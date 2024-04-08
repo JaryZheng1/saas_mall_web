@@ -3,6 +3,7 @@ import store from '@/store'
 import Config from '@/settings'
 import NProgress from 'nprogress' // progress bar
 import 'nprogress/nprogress.css'// progress bar style
+import { converPath } from '@/utils' // getToken from cookie
 import { getToken } from '@/utils/auth' // getToken from cookie
 import { buildMenus } from '@/api/system/menu'
 import { filterAsyncRouter } from '@/store/modules/permission'
@@ -28,16 +29,14 @@ router.beforeEach((to, from, next) => {
         console.log(3333)
         store.dispatch('GetInfo').then(res => { // 拉取user_info
           // 动态路由，拉取菜单
-          console.log(44444)
           loadMenus(next, to)
         }).catch((err) => {
-          console.log(5555)
           console.log(err)
-          store.dispatch('LogOut').then(() => {
+          store.dispatch('LogOutV2').then(() => {
             location.reload() // 为了重新实例化vue-router对象 避免bug
           })
         })
-      // 登录时未拉取 菜单，在此处拉取
+        // 登录时未拉取 菜单，在此处拉取
       } else if (store.getters.loadMenus) {
         // 修改成false，防止死循环
         store.dispatch('updateLoadMenus').then(res => {})
@@ -60,7 +59,8 @@ router.beforeEach((to, from, next) => {
 export const loadMenus = (next, to) => {
   buildMenus().then(res => {
     const asyncRouter = filterAsyncRouter(res)
-    asyncRouter.push({ path: '*', redirect: '/404', hidden: true })
+    converPath(asyncRouter)
+    console.log(asyncRouter, 8585)
     store.dispatch('GenerateRoutes', asyncRouter).then(() => { // 存储路由
       router.addRoutes(asyncRouter) // 动态添加可访问路由表
       next({ ...to, replace: true })

@@ -14,6 +14,14 @@
       <el-form-item label="">
         <el-button type="primary" @click="doSubmit">提交</el-button>
       </el-form-item>
+      <el-form-item label="快递鸟申请地址">
+        yshopb2c系统使用的第三方快递鸟api实现了快递查询，注册地址请点击，
+        <span style="color: blue; cursor: pointer;">
+          <a href="http://www.kdniao.com/reg?from=cbb-yx" target="_blank" style="color: inherit; text-decoration: underline;">
+            我注册！
+          </a>
+        </span>
+      </el-form-item>
     </el-form>
   </div>
 </template>

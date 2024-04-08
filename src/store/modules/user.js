@@ -1,9 +1,10 @@
 import { login, getInfo, logout } from '@/api/login'
-import { getToken, setToken, removeToken, getRefreshToken, setRefreshToken, setExpiresIn } from '@/utils/auth'
+import { getTenantId, setTenantId, getToken, setToken, removeToken, getRefreshToken, setRefreshToken, setExpiresIn } from '@/utils/auth'
 
 const user = {
   state: {
     token: getToken(),
+    tenantId: getTenantId(),
     refresh_token: getRefreshToken(),
     user: {},
     roles: [],
@@ -12,6 +13,9 @@ const user = {
   },
 
   mutations: {
+    SET_TENANT: (state, tenantId) => {
+      state.tenantId = tenantId
+    },
     SET_TOKEN: (state, token) => {
       state.token = token
     },
@@ -40,6 +44,8 @@ const user = {
         login(userInfo.username, userInfo.password, userInfo.code, userInfo.uuid).then(res => {
           // console.log('v:'+res.access_token)
           setToken(res.access_token, rememberMe)
+          setTenantId(res.tenantId)
+          commit('SET_TENANT', res.tenantId)
           // setToken(res.access_token)
           commit('SET_TOKEN', res.access_token)
           // setUserInfo(res.user, commit)

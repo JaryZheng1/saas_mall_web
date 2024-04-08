@@ -1,20 +1,20 @@
 <template>
   <div v-if="type == 'image'">
     <div v-if="myValue != ''">
-      <ul  class="el-upload-list el-upload-list--picture-card">
+      <ul class="el-upload-list el-upload-list--picture-card">
         <li tabindex="0" class="el-upload-list__item is-ready" :style="'width: '+width+'px;height: '+height+'px'">
           <div>
             <img :src="myValue" alt="" class="el-upload-list__item-thumbnail">
             <span class="el-upload-list__item-actions">
-                <span class="el-upload-list__item-delete" @click="deleteMaterial">
-                  <i class="el-icon-delete" />
-                </span>
+              <span class="el-upload-list__item-delete" @click="deleteMaterial">
+                <i class="el-icon-delete" />
               </span>
+            </span>
           </div>
         </li>
       </ul>
     </div>
-    <div v-else tabindex="0" class="el-upload el-upload--picture-card" :style="'width: '+width+'px;height: '+height+'px;'+'line-height:'+height+'px;'"  @click="toSeleteMaterial">
+    <div v-else tabindex="0" class="el-upload el-upload--picture-card" :style="'width: '+width+'px;height: '+height+'px;'+'line-height:'+height+'px;'" @click="toSeleteMaterial">
       <i class="el-icon-plus" />
     </div>
 
@@ -141,7 +141,7 @@
 <script>
 import { getPage as materialgroupPage, addObj as materialgroupAdd, delObj as materialgroupDel, putObj as materialgroupEdit } from '@/api/tools/materialgroup'
 import { getPage, addObj, delObj, putObj } from '@/api/tools/material'
-import { getToken } from '@/utils/auth'
+import { getToken, getTenantId } from '@/utils/auth'
 import { mapGetters } from 'vuex'
 
 export default {
@@ -180,7 +180,8 @@ export default {
   data() {
     return {
       headers: {
-        Authorization: getToken()
+        Authorization: getToken(),
+        tenantId: getTenantId()
       },
       dialogVisible: false,
       myValue: this.value,
@@ -210,7 +211,7 @@ export default {
     ])
   },
   watch: {
-    value: function (val) {
+    value: function(val) {
       this.myValue = val
     }
   },
@@ -454,7 +455,7 @@ export default {
       return isPic && isLt2M
     },
     sureUrls() {
-      console.log('this.urls:'+this.urls)
+      console.log('this.urls:' + this.urls)
       this.myValue = this.urls[0]
       this.$emit('input', this.urls[0])
       this.listDialogVisible = false

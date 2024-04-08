@@ -147,7 +147,7 @@
 <script>
 import { getPage as materialgroupPage, addObj as materialgroupAdd, delObj as materialgroupDel, putObj as materialgroupEdit } from '@/api/tools/materialgroup'
 import { getPage, addObj, delObj, putObj } from '@/api/tools/material'
-import { getToken } from '@/utils/auth'
+import { getToken, getTenantId } from '@/utils/auth'
 import { mapGetters } from 'vuex'
 import '../../../public/UEditor/dialogs/internal'
 
@@ -190,7 +190,8 @@ export default {
   data() {
     return {
       headers: {
-        Authorization: getToken()
+        Authorization: getToken(),
+        tenantId: getTenantId()
       },
       dialogVisible: true,
       url: '',
@@ -466,7 +467,6 @@ export default {
       this.urls.forEach(item => {
         str += '<img src="' + item + '">'
         // this.$set(this.value, this.value.length, item)
-        
       })
       nowEditor.dialog.close(true)
       nowEditor.editor.setContent(str, true)
