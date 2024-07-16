@@ -349,7 +349,7 @@
 <script>
 import { getCates } from '@/api/yxStoreCategory'
 import { add, edit, getInfo, isFormatAttr } from '@/api/yxStoreProduct'
-import editor from '../../../components/Editor'
+import editor from '../../components/Editor'
 import picUpload from '@/components/pic-upload'
 import mulpicUpload from '@/components/mul-pic-upload'
 import Treeselect from '@riophae/vue-treeselect'
@@ -736,7 +736,7 @@ export default {
               type: 'success'
             });
             setTimeout(() => {
-              this.$router.push({ path: '/managerShop/shop/goods' });
+              this.$router.push({ path: '/shop/goods' });
             }, 500);
           }).catch(res => {
             // this.$message({

@@ -312,7 +312,7 @@ export default {
   },
   methods: {
     toDetailURL(id){
-      this.$router.push({ path: '/managerShop/order/detail/'+id })
+      this.$router.push({ path: '/order/detail/'+id })
     },
     formatTime,
     checkPermission,

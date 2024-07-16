@@ -48,7 +48,7 @@
       <el-table-column v-if="checkPermission(['admin','YXSTOREPRODUCT_ALL','YXSTOREPRODUCT_EDIT','YXSTOREPRODUCT_DELETE'])" label="操作" width="150px" align="center">
         <template slot-scope="scope">
           <el-button v-permission="['admin','YXSTOREPRODUCT_ALL','YXSTOREPRODUCT_EDIT']" size="mini" type="primary" icon="el-icon-edit">
-            <router-link :to="'/managerShop/shop/goodsEdit/'+scope.row.id">
+            <router-link :to="'/shop/goodsEdit/'+scope.row.id">
               编辑
             </router-link>
           </el-button>

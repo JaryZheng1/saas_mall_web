@@ -6,8 +6,8 @@
 </template>
 
 <script>
-    import toDay from './components/toDay'
-    import transactionFrom from './components/transaction'
+    import toDay from './components/toDay.vue'
+    import transactionFrom from './components/transaction.vue'
     export default {
         name: "index",
         components: {

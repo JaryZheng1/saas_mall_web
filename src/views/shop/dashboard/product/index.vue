@@ -6,8 +6,8 @@
 </template>
 
 <script>
-import product from './components/visualization'
-import tableData from './components/tableData'
+import product from './components/visualization.vue'
+import tableData from './components/tableData.vue'
 export default {
   components:{
     product,

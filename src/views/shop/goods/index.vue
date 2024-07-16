@@ -22,7 +22,7 @@
           type="primary"
           icon="el-icon-plus"
         >
-          <router-link :to="'/managerShop/shop/goodsAdd'">
+          <router-link :to="'/shop/goodsAdd'">
             新增
           </router-link>
         </el-button>
@@ -70,7 +70,7 @@
             type="primary"
             icon="el-icon-edit"
           >
-          <router-link :to="'/managerShop/shop/goodsEdit/'+scope.row.id">
+          <router-link :to="'/shop/goodsEdit/'+scope.row.id">
             编辑
           </router-link>
           </el-button>

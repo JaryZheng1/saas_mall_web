@@ -50,7 +50,7 @@
 
 <script>
 import echarts from "echarts";
-import "../../../../../../../node_modules/echarts/map/js/china.js";
+import "../../../../../../node_modules/echarts/map/js/china.js";
 import { userAreaData, userChannelData,userSexData } from '@/api/dashboard'
 import echartsNew from "@/components/echartsNew/index";
 export default {

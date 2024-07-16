@@ -13,8 +13,8 @@
 </template>
 
 <script>
-import userInfo from "./components/userInfo";
-import userRegion from "./components/userRegion";
+import userInfo from "./components/userInfo.vue";
+import userRegion from "./components/userRegion.vue";
 import cardsData from "@/components/cards/index";
 import { userTotalData} from '@/api/dashboard'
 export default {
