@@ -2,7 +2,8 @@
   <section class="app-main">
     <transition name="fade-transform" mode="out-in">
       <keep-alive :include="cachedViews">
-        <router-view :key="key" />
+        <component :is="currentComponent" :key="key" />
+        <!-- <router-view v-else /> -->
       </keep-alive>
     </transition>
     <div v-if="$store.state.settings.showFooter" id="el-main-footer">
@@ -14,17 +15,43 @@
 </template>
 
 <script>
+import User from '@/views/system/user/index'
+import Role from '@/views/system/role/index'
+import Menu from '@/views/system/menu/index'
+
 export default {
   name: 'AppMain',
+  components: {
+    User,
+    Role,
+    Menu
+  },
   computed: {
     cachedViews() {
       return this.$store.state.tagsView.cachedViews
     },
     key() {
       return this.$route.path
+    },
+    currentComponent() {
+      const path = this.$route.path
+      console.log(path)
+      // 当路由路径包含 '/sys' 时，显示示例页面
+      if (path.indexOf('system/user') > -1) {
+        return 'User'
+      } else if (path.indexOf('system/role') > -1) {
+        return 'Role'
+      } else if (path.indexOf('system/menu') > -1) {
+        return 'Menu'
+      }
+      // 否则使用 router-view
+      return 'router-view'
+    }
+  },
+  mounted() {
+      console.log('AppMain mounted')
     }
   }
-}
 </script>
 
 <style lang="scss" scoped>
