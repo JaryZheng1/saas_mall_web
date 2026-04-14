@@ -23,6 +23,9 @@ service.interceptors.request.use(
       config.headers['tenantId'] = getTenantId() // 让每个请求携带自定义token 请根据实际情况自行修改
     }
     config.headers['Content-Type'] = 'application/json'
+    // 添加国际化语言标识
+    const language = localStorage.getItem('language') || 'zh-CN'
+    config.headers['Accept-Language'] = language
     return config
   },
   error => {
