@@ -30,6 +30,9 @@ import 'highlight.js/styles/atom-one-dark.css'
 
 import '@/assets/font_icon/iconfont.css'
 
+// 国际化 i18n
+import i18n from './lang'
+
 import App from './App'
 import store from './store'
 import router from './router/routers'
@@ -51,5 +54,6 @@ new Vue({
   el: '#app',
   router,
   store,
+  i18n,
   render: h => h(App)
 })
